@@ -93,6 +93,7 @@ namespace UserManagment.Api.Controllers
         //    _userRepository.DeleteUser(Id);
         //}​​​​​​​
 
+        [HttpPost("Delete/{​​​​​​​id}​​​​​​​")]
         public void DeleteUser(long Id)
         {
             UserProfile userProfile = _userProfileRepository.GetUserProfile(Id);
