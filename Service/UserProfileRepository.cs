@@ -17,7 +17,7 @@ namespace Service
         }
         public UserProfile GetUserProfile(long Id)
         {
-            throw new NotImplementedException();
+            return userProfileRepository.Get(Id);
         }
     }
 }
