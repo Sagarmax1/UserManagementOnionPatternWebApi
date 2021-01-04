@@ -10,6 +10,6 @@ namespace Domain.Models
         public string LastName { get; set; }
         public string Address { get; set; }
         public User user { get; set; }  //Navigation Properties
-
+        
     }
 }
