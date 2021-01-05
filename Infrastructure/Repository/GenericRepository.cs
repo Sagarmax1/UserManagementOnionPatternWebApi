@@ -52,7 +52,11 @@ namespace Infrastructure.Repository
 
         public void Remove(T entity)
         {
-            throw new NotImplementedException();
+            if(entity == null)
+            {
+                throw new ArgumentException("entity");
+            }
+            entities.Remove(entity);
         }
 
         public void SaveChanges()

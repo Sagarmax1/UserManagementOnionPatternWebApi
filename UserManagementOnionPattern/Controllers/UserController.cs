@@ -7,7 +7,7 @@ using UserManagementOnionPattern.Controllers.UserDTO;
 namespace UserManagment.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
         IUserRepository _userRepository;
@@ -68,7 +68,10 @@ namespace UserManagment.Api.Controllers
             return Ok(1);
         }
 
-        [HttpPost("Edit/{​​​​​id}​​​​​")]
+
+        //[HttpPut("EditDepartment")] for cheking forcheking Syntax https://localhost:44385/api/Department/EditDepartment and Id put in body
+       // [HttpPost("Edit/{​​​​​id}​​​​​")] 
+       [HttpPut("Edit")]
         public void EditUser(UserDto model)
         {
             User userEntity = _userRepository.GetUser(model.Id);
@@ -78,11 +81,14 @@ namespace UserManagment.Api.Controllers
            _userRepository.UpdateUser(userEntity);
         }
 
-        [HttpPost("Delete/{​​​​​​​id}​​​​​​​")]
-        public void DeleteUser(long Id)
+
+     // [HttpDelete("DeleteDepartment")] forcheking syntax- https://localhost:44385/api/Department/DeleteDepartment?id=13
+      //  [HttpPost("Delete/{​​​​​​​id}​​​​​​​")] 
+        [HttpDelete("Delete/{​​​​​​​id}")]
+        public void DeleteUser(long id)
         {
-            UserProfile userProfile = _userProfileRepository.GetUserProfile(Id);
-           _userRepository.DeleteUser(Id);
+            UserProfile userProfile = _userProfileRepository.GetUserProfile(id);
+           _userRepository.DeleteUser(id);
         }
 
 
