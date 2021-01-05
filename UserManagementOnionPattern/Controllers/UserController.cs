@@ -47,7 +47,6 @@ namespace UserManagment.Api.Controllers
 
                 userProfile = new UserProfile
                 {
-                   // UserName = user.UserName,
 
                     FirstName = user.FirstName,
 
@@ -76,22 +75,8 @@ namespace UserManagment.Api.Controllers
             userEntity.Email = model.Email;
             userEntity.ModifiedDate = DateTime.UtcNow;
             userEntity.IPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
-            UserProfile userProfileEntity = _userProfileRepository.GetUserProfile(model.Id);
-            userProfileEntity.FirstName = model.FirstName;
-            userProfileEntity.LastName = model.LastName;
-            userProfileEntity.Address = model.Address;
-            userProfileEntity.ModifiedDate = DateTime.UtcNow;
-            userProfileEntity.IPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
-            userEntity.userProfile = userProfileEntity;
            _userRepository.UpdateUser(userEntity);
         }
-
-        //[HttpPost("Delete/{​​​​​​​id}​​​​​​​")]
-        //public void DeleteUser(long Id)
-        //{​​​​​​​
-        //    UserProfile userProfile = _userProfileRepository.GetUserProfile(Id);
-        //    _userRepository.DeleteUser(Id);
-        //}​​​​​​​
 
         [HttpPost("Delete/{​​​​​​​id}​​​​​​​")]
         public void DeleteUser(long Id)
