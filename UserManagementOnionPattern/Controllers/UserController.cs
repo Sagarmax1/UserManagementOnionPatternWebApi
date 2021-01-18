@@ -41,7 +41,7 @@ namespace UserManagment.Api.Controllers
 
                 AddedDate = user.AddedDate,
 
-                ModifiedDate=DateTime.Now,
+                ModifiedDate = DateTime.Now,
 
                 IPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString(),
 
@@ -56,7 +56,7 @@ namespace UserManagment.Api.Controllers
 
                     AddedDate = DateTime.UtcNow,
 
-                    ModifiedDate=DateTime.UtcNow,
+                    ModifiedDate = DateTime.UtcNow,
 
                     IPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString(),
 
@@ -70,25 +70,28 @@ namespace UserManagment.Api.Controllers
 
 
         //[HttpPut("EditDepartment")] for cheking forcheking Syntax https://localhost:44385/api/Department/EditDepartment and Id put in body
-       // [HttpPost("Edit/{​​​​​id}​​​​​")] 
-       [HttpPut("Edit")]
+        // [HttpPost("Edit/{​​​​​id}​​​​​")] 
+
+
+        [HttpPut("Edit")]
         public void EditUser(UserDto model)
         {
             User userEntity = _userRepository.GetUser(model.Id);
             userEntity.Email = model.Email;
             userEntity.ModifiedDate = DateTime.UtcNow;
             userEntity.IPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
-           _userRepository.UpdateUser(userEntity);
+            _userRepository.UpdateUser(userEntity);
         }
 
 
-     // [HttpDelete("DeleteDepartment")] forcheking syntax- https://localhost:44385/api/Department/DeleteDepartment?id=13
-      //  [HttpPost("Delete/{​​​​​​​id}​​​​​​​")] 
-        [HttpDelete("Delete/{​​​​​​​id}")]
+        // [HttpDelete("DeleteDepartment")] forcheking syntax- https://localhost:44385/api/Department/DeleteDepartment?id=13
+        //  [HttpPost("Delete/{​​​​​​​id}​​​​​​​")] 
+
+        [HttpDelete("DeleteUser/{​​​​​​​id}")]
         public void DeleteUser(long id)
         {
             UserProfile userProfile = _userProfileRepository.GetUserProfile(id);
-           _userRepository.DeleteUser(id);
+            _userRepository.DeleteUser(id);
         }
 
 
